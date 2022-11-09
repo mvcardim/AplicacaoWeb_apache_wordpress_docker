@@ -1,0 +1,44 @@
+services:
+  db:
+    # Image mariadb que suporta amd64 e arm64 arquitetura
+    image: mariadb:10.6.4-focal
+    # Para utilizar mysql
+    #image: mysql:8.0.27
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+    #Banco de dados do mysql
+      - db_data:/var/lib/mysql
+    ports:
+      - 80:80
+    restart: always
+    #Variaveis de ambiente do Wordpress
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+volumes:
+  db_data:
+    restart: always
+  GNU nano 2.9.8                                   compose.yaml
+#Variaveis de ambiente do Mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Senha123
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    expose:
+      - 3306
+      - 33060
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+volumes:
+  db_data:
