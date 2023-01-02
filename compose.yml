@@ -20,7 +20,7 @@ services:
 volumes:
   db_data:
     restart: always
-  GNU nano 2.9.8                                   compose.yml
+  GNU nano 2.9.8                                   compose.yaml
 #Variaveis de ambiente do Mysql
     environment:
       - MYSQL_ROOT_PASSWORD=Senha123
